@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🗞️ News | Dashboard</title>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 100vh;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: #fff;
+      transition: background 1s ease-in-out;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 99;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+    }
+
+    .logo {
+      font-size: 1.8em;
+      font-weight: 700;
+      user-select: none;
+    }
+
+    .navigation a {
+      font-size: 1.1em;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .navigation a:hover {
+      color: #ffda79;
+    }
+
+    /* Main content */
+    main {
+      margin-top: 140px;
+      padding: 30px 50px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+      width: 85%;
+      max-width: 1200px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 2.5em;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .date-time {
+      font-size: 1.3em;
+      margin-bottom: 30px;
+      color: #ffda79;
+      font-weight: 500;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 8px rgba(255, 220, 150, 0.6); }
+      to { text-shadow: 0 0 20px rgba(255, 240, 180, 1); }
+    }
+
+    /* News Grid */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+    }
+
+    .news-item {
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+      text-align: left;
+    }
+
+    .news-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+    }
+
+    .news-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.4s ease;
+    }
+
+    .news-item:hover .news-image {
+      transform: scale(1.05);
+    }
+
+    .news-content {
+      padding: 20px;
+    }
+
+    .news-content h3 {
+      margin-bottom: 10px;
+      font-size: 1.2em;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.4;
+    }
+
+    .news-content h3 a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .news-content h3 a:hover {
+      color: #00b0ff;
+    }
+
+    .news-content p {
+      font-size: 0.95em;
+      color: #e8e8e8;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+
+    .news-content small {
+      font-size: 0.85em;
+      color: #cfcfcf;
+    }
+
+    .no-news {
+      text-align: center;
+      font-size: 1.2em;
+      color: #fff;
+      opacity: 0.8;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 20px;
+      }
+
+      .navigation {
+        margin-top: 10px;
+      }
+
+      main {
+        width: 90%;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h2 class="logo">🗞️ News Dashboard</h2>
+    <nav class="navigation">
+       <a href="/">Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Today's Headlines</h1>
+    <div class="date-time">{{ now.strftime('%A, %d %B %Y - %I:%M %p') }}</div>
+
+    <div class="container">
+      {% if news %}
+        {% for article in news %}
+          <div class="news-item">
+            <img src="{{ article.image_url }}" alt="news image" class="news-image">
+            <div class="news-content">
+              <h3><a href="{{ article.link }}" target="_blank">{{ article.title }}</a></h3>
+              <p>{{ article.description }}</p>
+              <small>📰 {{ article.source }} | {{ article.publishedAt }}</small>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="no-news">No news articles found for today.</p>
+      {% endif %}
+    </div>
+  </main>
+
+  <script>
+    // 🖼️ Background detection logic (same as weather.html)
+    const possibleImages = [
+      '/static/background.jpg'
+    ];
+
+    (async function setBackground() {
+      for (const img of possibleImages) {
+        try {
+          const res = await fetch(img);
+          if (res.ok) {
+            document.body.style.backgroundImage = `url('${img}')`;
+            break;
+          }
+        } catch {}
+      }
+    })();
+  </script>
+</body>
+</html>
